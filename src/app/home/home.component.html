@@ -7,24 +7,29 @@
     </div>
 
     <div class="col">
-        <p>To-Do List</p>
+
+        <!-- count of the items  -->
+
+        <p>To-Do List  {{itemCounter}}</p>  
     </div>
 </div>
 
 
+<!-- once remove and added the list item length -->
 
-<div class="container color-light">
+<div class="container color-light" [@projects]="projects.length">
 
     <div class="col">
         <h2> Use This Add and Remove To-Do list </h2>
 
         <form>
 
-            <input type="text" class='text' name="project-to-do" placeholder="Add To-do list">
+            <!-- aded items  -->
 
-            <br>
+            <input type="text" class='text' name="project-to-do" placeholder="Add To-do list" [(ngModel)]="projectText">
 
-            <button type="button" class='btn'>Submit</button>
+
+            <button type="button" class='btn' (click)="addItems()">Submit</button>
 
         </form>
         
@@ -34,8 +39,10 @@
     </div>
 
     <div class="col">
-        <p class="project-container">
-            Project-List
+        <!-- once click the item that easyly removed  -->
+        <p class="project-container" *ngFor='let list of projects;let i=index' (click)="removeItems(i)">
+
+            {{list}}
         </p>
     </div>
     
